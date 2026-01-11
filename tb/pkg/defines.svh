@@ -1,0 +1,10 @@
+
+`ifndef APB2AXI_DEFINES_SVH
+`define APB2AXI_DEFINES_SVH
+
+`define APB_ADDR_WIDTH 32
+`define APB_DATA_WIDTH 32
+`define AXI_ADDR_WIDTH 32
+`define AXI_DATA_WIDTH 64
+
+`endif

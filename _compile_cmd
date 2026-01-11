@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+#------------------------------------------------------------------------------
+# _compile_cmd
+# Purpose:
+#   Compile APB2AXI project with Synopsys VCS (UVM 1.2) while keeping the
+#   project root clean:
+#     - simv ends up at:        $PROJECT_HOME/simv
+#     - build artifacts go to:  $PROJECT_HOME/build/vcs/...
+#     - log goes to:            $PROJECT_HOME/logs/comp.log
+#
+# Usage:
+#   cd $PROJECT_HOME
+#   ./_compile_cmd
+#
+# Optional env overrides:
+#   PROJECT_HOME   (default: directory where this script lives)
+#   BUILD_DIR      (default: $PROJECT_HOME/build/vcs)
+#   VERDI_HOME     (must be set if you want Verdi PLI / -kdb)
+#
+# Run:
+#   setenv PROJECT_HOME /users/epnimo/Final_Project
+#   setenv BUILD_DIR    $PROJECT_HOME/build/vcs
+#
+# Use:
+#   env SEED_MODE=rand scripts/reg_launch.csh
+#   env TEST_SET=read scripts/reg_launch.csh
+#   env SEED_COUNT=50 scripts/reg_launch.csh
+#   env SEED_MODE=rand SEED_COUNT=50 JOBS=4 TEST_SET=read scripts/reg_launch.csh
+#
+# Notes:
+#   - We force VCS csrc output into BUILD_DIR via -Mdir.
+#   - We add rpath so simv can find BUILD_DIR/simv.daidir at runtime.
+#------------------------------------------------------------------------------
+
+set -euo pipefail
+
+# Resolve PROJECT_HOME safely (works even if user didn't export it)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+: "${PROJECT_HOME:=$SCRIPT_DIR}"
+: "${BUILD_DIR:=$PROJECT_HOME/build/vcs}"
+
+LOG_DIR="$PROJECT_HOME/logs"
+COMP_LOG="$LOG_DIR/comp.log"
+
+# Ensure output directories exist
+mkdir -p "$BUILD_DIR" "$BUILD_DIR/csrc" "$LOG_DIR"
+
+# Verdi PLI paths (optional)
+VERDI_TAB=""
+VERDI_SO=""
+VERDI_ARGS=()
+
+if [[ -n "${VERDI_HOME:-}" ]]; then
+  VERDI_TAB="$VERDI_HOME/share/PLI/VCS/linux64/novas.tab"
+  VERDI_SO="$VERDI_HOME/share/PLI/VCS/linux64/libnovas.so"
+
+  if [[ -f "$VERDI_TAB" && -f "$VERDI_SO" ]]; then
+    VERDI_ARGS+=( -kdb -P "$VERDI_TAB" "$VERDI_SO" )
+  else
+    echo "[WARN] VERDI_HOME is set but PLI files not found:"
+    echo "       $VERDI_TAB"
+    echo "       $VERDI_SO"
+    echo "[WARN] Continuing without -kdb/-P (no Verdi integration)."
+  fi
+else
+  echo "[INFO] VERDI_HOME not set -> compiling without -kdb/-P (no Verdi integration)."
+fi
+
+# rpath so $PROJECT_HOME/simv can find $BUILD_DIR/simv.daidir
+# - absolute rpath: robust if simv always used from this tree
+# - relative rpath: robust if tree is relocated (uses $ORIGIN from simv path)
+RPATH_FLAGS="-Wl,-rpath,${BUILD_DIR}/simv.daidir -Wl,-rpath,'\$ORIGIN'/build/vcs/simv.daidir"
+
+echo "[INFO] PROJECT_HOME=$PROJECT_HOME"
+echo "[INFO] BUILD_DIR=$BUILD_DIR"
+echo "[INFO] simv will be: $PROJECT_HOME/simv"
+echo "[INFO] comp log:     $COMP_LOG"
+echo "[INFO] csrc dir:     $BUILD_DIR/csrc"
+echo
+
+#------------------------------------------------------------------------------
+# VCS compile
+#------------------------------------------------------------------------------
+vcs -full64 -sverilog \
+  -debug_access+all \
+  -ntb_opts uvm-1.2 \
+  -f "$PROJECT_HOME/filelist.f" \
+  -o "$PROJECT_HOME/simv" \
+  -Mdir="$BUILD_DIR/csrc" \
+  -l "$COMP_LOG" \
+  -LDFLAGS "$RPATH_FLAGS" \
+  "${VERDI_ARGS[@]}"
+
+echo
+echo "[OK] Compile done."
+echo "[INFO] If you ever get missing _archive_*.so at runtime, run:"
+echo "      export LD_LIBRARY_PATH=\"$BUILD_DIR/simv.daidir:\$LD_LIBRARY_PATH\""
