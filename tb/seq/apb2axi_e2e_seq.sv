@@ -10,8 +10,6 @@
 // 5) Program TAG_NUM read transactions
 // 6) Delayed, interleaved APB-word drain
 // 7) Compare drained data to original writes
-//
-// Deterministic, no tag reuse, no BFM get(), no magic.
 //------------------------------------------------------------------------------
 
 class apb2axi_e2e_seq extends apb2axi_base_seq;
@@ -109,8 +107,7 @@ class apb2axi_e2e_seq extends apb2axi_base_seq;
                pick = eligible[$urandom_range(0, eligible.size()-1)];
 
                for (int k = 0; k < APB_WORDS_PER_AXI_BEAT; k++)
-                    beat_words[k] =
-                         txns[pick].apb_words[sent_beats[pick]*APB_WORDS_PER_AXI_BEAT + k];
+                    beat_words[k] = txns[pick].apb_words[sent_beats[pick]*APB_WORDS_PER_AXI_BEAT + k];
 
                push_wr_beat(txns[pick].tag, beat_words);
 
@@ -138,8 +135,7 @@ class apb2axi_e2e_seq extends apb2axi_base_seq;
                          txns[i].apb_words[b*2+1],
                          txns[i].apb_words[b*2+0]
                     };
-                    peek_axi_word64(txns[i].addr + b*(AXI_DATA_W/8),
-                                    got64, ok);
+                    peek_axi_word64(txns[i].addr + b*(AXI_DATA_W/8), got64, ok);
                     if (!ok || got64 !== exp64)
                          `uvm_fatal("E2E_WR_CMP", $sformatf("WRITE MISMATCH TXN=%0d BEAT=%0d", i, b))
                end
@@ -180,7 +176,12 @@ class apb2axi_e2e_seq extends apb2axi_base_seq;
 
                exp32 = expected_word(txns[pick], drained[pick]);
 
-               if (got32 !== exp32) `uvm_fatal("E2E_RD_CMP", $sformatf("READ MISMATCH TXN=%0d WORD=%0d", pick, drained[pick]))
+               if (got32 !== exp32) begin
+                    `uvm_fatal("E2E_RD_CMP", $sformatf("READ MISMATCH TXN=%0d WORD=%0d", pick, drained[pick]))
+               end
+               else begin
+                    `uvm_info("E2E_RD_CMP", $sformatf("STEP=%0d TXN=%0d TAG=%0d BEAT=%0d DATA=%0h", step, pick, txns[pick].tag, sent_beats[pick], got32), UVM_NONE)
+               end
 
                drained[pick]++;
                step++;

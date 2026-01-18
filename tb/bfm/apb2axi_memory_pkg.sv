@@ -14,7 +14,7 @@ package apb2axi_memory_pkg;
 
   typedef logic [AXI_DATA_W-1:0] mem_word_t;
 
-  function automatic int unsigned addr2idx (logic [63:0] a);
+  function automatic int unsigned addr2idx (logic [AXI_ADDR_W-1:0] a);
     addr2idx = (a - MEM_BASE_ADDR) >> $clog2(BYTES_PER_BEAT);
   endfunction
 

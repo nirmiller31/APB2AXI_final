@@ -61,7 +61,7 @@ module apb2axi_response_collector #(
             default:         return 0;
         endcase
     endfunction
-
+`ifndef SYNTHESIS
     function automatic string resp2s(logic [1:0] r);
         case (r)
             2'b00:      return "OKAY";
@@ -71,7 +71,7 @@ module apb2axi_response_collector #(
             default:    return "UNKN";
         endcase
     endfunction
-
+`endif
     always_ff @(posedge aclk) begin
         if (!aresetn) begin
             rsp_rdf_push_vld        <= 1'b0;

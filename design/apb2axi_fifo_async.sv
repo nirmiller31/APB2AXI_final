@@ -14,6 +14,7 @@ module apb2axi_fifo_async #(
     output logic [WIDTH-1:0]   rd_data,
     input  logic               rd_rdy
 );
+localparam int unsigned CNT_W = $clog2(DEPTH + 1);
 
     // DW uses active-low push/pop
     logic push_s_n, pop_d_n;
@@ -46,8 +47,8 @@ module apb2axi_fifo_async #(
         .rst_s_n       (wr_resetn),
         .init_s_n      (1'b1),
         .clr_s         (1'b0),
-        .ae_level_s    ('0),
-        .af_level_s    ('0),
+        .ae_level_s    ({CNT_W{1'b0}}),
+        .af_level_s    ({CNT_W{1'b0}}),
         .push_s_n      (push_s_n),
         .data_s        (wr_data),
 
@@ -70,8 +71,8 @@ module apb2axi_fifo_async #(
         .rst_d_n       (rd_resetn),
         .init_d_n      (1'b1),
         .clr_d         (1'b0),
-        .ae_level_d    ('0),
-        .af_level_d    ('0),
+        .ae_level_d    ({CNT_W{1'b0}}),
+        .af_level_d    ({CNT_W{1'b0}}),
         .pop_d_n       (pop_d_n),
 
         .clr_sync_d    (),

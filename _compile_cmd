@@ -34,10 +34,10 @@
 
 set -euo pipefail
 
-# Resolve PROJECT_HOME safely (works even if user didn't export it)
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-: "${PROJECT_HOME:=$SCRIPT_DIR}"
-: "${BUILD_DIR:=$PROJECT_HOME/build/vcs}"
+# # Resolve PROJECT_HOME safely (works even if user didn't export it)
+# SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# : "${PROJECT_HOME:=$SCRIPT_DIR}"
+# : "${BUILD_DIR:=$PROJECT_HOME/build/vcs}"
 
 LOG_DIR="$PROJECT_HOME/logs"
 COMP_LOG="$LOG_DIR/comp.log"
@@ -92,6 +92,6 @@ vcs -full64 -sverilog \
   "${VERDI_ARGS[@]}"
 
 echo
-echo "[OK] Compile done."
-echo "[INFO] If you ever get missing _archive_*.so at runtime, run:"
-echo "      export LD_LIBRARY_PATH=\"$BUILD_DIR/simv.daidir:\$LD_LIBRARY_PATH\""
+echo "[SIM_INFO] bash scripts/reg_launch.sh"
+echo "[SIM_INFO] env SEED_MODE=rand SEED_COUNT=50 JOBS=4 TEST_SET=read scripts/reg_launch.csh"
+echo

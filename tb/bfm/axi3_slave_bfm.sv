@@ -200,7 +200,7 @@ class axi3_slave_bfm extends uvm_component;
                ar = active_reads[idx];
 
                // RANDOM latency before issuing the beat (optional)
-               repeat ($urandom_range(0,3)) @(posedge vif.ACLK);
+               repeat ($urandom_range(0,30)) @(posedge vif.ACLK);
 
                // ======== SEND ONE R BEAT ========
                rdata  = '0;
