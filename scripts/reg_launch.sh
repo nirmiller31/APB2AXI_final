@@ -1,48 +1,93 @@
 #!/usr/bin/env bash
-# run command: bash scripts/reg_launch.sh (from Project), dont forget to clean regression!!!
-set -euo pipefail
+#==============================================================================
+# Regression Launcher (APB2AXI UVM)
+#------------------------------------------------------------------------------
+# Run from project root:
+#   bash scripts/reg_launch.sh
+#
+# Notes / workflow reminders:
+#   - This script assumes you already have a clean regression area when needed.
+#   - It generates OUTROOT with per-mode/per-seed run dirs, plus a CSV + HTML
+#     status summary for fast triage.
+#   - A stable symlink is maintained at:  out/latest  -> last OUTROOT
+#
+# Typical overrides (environment variables):
+#   TEST_SET=read|write|e2e|error|all
+#   JOBS=8
+#   SEED_MODE=rand|inc
+#   SEED_COUNT=50
+#   UVM_TESTNAME=apb2axi_test
+#   SIMV=/path/to/simv
+#==============================================================================
 
+set -euo pipefail  # strict: fail on error, unset vars, and pipeline errors
+
+#------------------------------------------------------------------------------
+# Resolve script location and project root
+#------------------------------------------------------------------------------
+# SCRIPT_DIR: directory containing this script (scripts/)
+# PROJ_DIR  : project root (one level above scripts/)
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 PROJ_DIR="$(cd -- "$SCRIPT_DIR/.." && pwd)"
 
 # ---------------------------
 # User inputs (edit defaults)
 # ---------------------------
+
+# UVM test class to run (passed as +UVM_TESTNAME)
 UVM_TESTNAME="${UVM_TESTNAME:-apb2axi_test}"
 
-# Which tests to run: all|read|write|e2e|error
+# High-level group selector.
+# all   : read + write + e2e
+# read  : read modes only
+# write : write modes only
+# e2e   : end-to-end modes only
+# error : error injection modes only
 TEST_SET="${TEST_SET:-all}"
 
-# Seeds: either provide SEEDS="1 2 3" or SEED_MODE + ranges
+# Seeds input:
+# - If SEEDS is provided (space-separated), use it directly.
+# - Otherwise generate seeds via SEED_MODE + count/range.
 SEEDS="${SEEDS:-}"
 
-# Seed generation mode: "inc" or "rand"
+# Seed generation mode:
+#   rand: generate SEED_COUNT random seeds in [SEED_RAND_MIN, SEED_RAND_MAX]
+#   inc : generate SEED_COUNT incremental seeds starting from SEED_START
 SEED_MODE="${SEED_MODE:-rand}"
 
-# Random seed range (only used when SEED_MODE=rand)
+# Random seed range (only when SEED_MODE=rand)
 SEED_RAND_MIN="${SEED_RAND_MIN:-1}"
 SEED_RAND_MAX="${SEED_RAND_MAX:-2147483647}"
 
-# Incremental mode params (only used when SEED_MODE=inc)
+# Incremental mode params (only when SEED_MODE=inc)
 SEED_START="${SEED_START:-777225}"
 SEED_COUNT="${SEED_COUNT:-10}"
 
-# Parallelism
+# Parallelism:
+# controls how many independent simulations run concurrently via xargs -P
 JOBS="${JOBS:-1}"
 
-# Where simv lives (or build step below can create it)
+# Where simv lives.
+# You can set SIMV explicitly, or uncomment the optional build step below.
 SIMV="${SIMV:-$PROJ_DIR/simv}"
 
-# Output dir
+# Output root directory for this regression.
+# Includes test name + timestamp so it never collides.
 OUTROOT="${OUTROOT:-out/regress_${UVM_TESTNAME}_$(date +%Y%m%d_%H%M%S)}"
 
-# Live report refresh during regression (seconds)
+# Live report refresh interval (used by the HTML live-updater loop)
 REPORT_REFRESH_SEC="${REPORT_REFRESH_SEC:-5}"
 
-# ---------------------------
-# Define MODES (name + flags)
-# Each mode is: MODE_NAME|EXTRA_PLUSARGS
-# ---------------------------
+#------------------------------------------------------------------------------
+# Define regression MODES
+#------------------------------------------------------------------------------
+# Each mode is:  MODE_NAME|EXTRA_PLUSARGS
+#
+# Design intent:
+# - Separate "mode name" from plusargs to get clean directory structure:
+#     OUTROOT/runs/<mode_name>/seed_<seed>/
+# - "EXTRA_PLUSARGS" selects sequences/knobs in the TB (+APB2AXI_SEQ=...)
+#------------------------------------------------------------------------------
 READ_MODES=(
   "read_regular_outstanding|+APB2AXI_SEQ=READ"
   "read_linear_outstanding|+APB2AXI_SEQ=READ +LINEAR_OUTSTANDING"
@@ -61,12 +106,17 @@ E2E_MODES=(
   "e2e_extreme_outstanding|+APB2AXI_SEQ=E2E +EXTREME_OUTSTANDING"
 )
 
+# Error campaigns:
+# - These modes are meant to validate the APB-visible consumption of an AXI error:
+#   you deliberately force error responses and ensure the APB flow sees them.
+# - The "worst policy" case verifies the response aggregation policy behavior.
 ERROR_MODES=(
   "read_error|+APB2AXI_SEQ=READ_ERROR"
   "write_error|+APB2AXI_SEQ=WRITE_ERROR"
   "read_error_worst_policy|+APB2AXI_SEQ=READ_ERROR +RESP_POLICY_WORST"
 )
 
+# Select which set of MODES to use based on TEST_SET
 case "$TEST_SET" in
   all)   MODES=( "${READ_MODES[@]}" "${WRITE_MODES[@]}" "${E2E_MODES[@]}") ;;
   read)  MODES=( "${READ_MODES[@]}" ) ;;
@@ -79,12 +129,17 @@ case "$TEST_SET" in
     ;;
 esac
 
-# ---------------------------
-# Helper: build seeds list
-# ---------------------------
+#------------------------------------------------------------------------------
+# Helper: build seeds list (only if SEEDS wasn't provided)
+#------------------------------------------------------------------------------
+# Why:
+# - We want "drop-in" usability: user can run script without specifying SEEDS.
+# - Random mode uses SystemRandom for better randomness (no deterministic PRNG).
+# - We try to produce unique seeds when the range is large enough.
 if [[ -z "$SEEDS" ]]; then
   if [[ "$SEED_MODE" == "rand" ]]; then
     # Generate SEED_COUNT random seeds in [SEED_RAND_MIN, SEED_RAND_MAX]
+    # Uses python to avoid bash RNG limitations and handle uniqueness cleanly.
     SEEDS="$(python3 - <<'PY'
 import os, random
 n  = int(os.environ.get("SEED_COUNT","10"))
@@ -107,7 +162,7 @@ print(" ".join(out))
 PY
 )"
   else
-    # Incremental (original behavior)
+    # Incremental (original behavior): deterministic list of seeds
     SEEDS=""
     for ((s=SEED_START; s<SEED_START+SEED_COUNT; s++)); do
       SEEDS+="$s "
@@ -115,30 +170,50 @@ PY
   fi
 fi
 
+#------------------------------------------------------------------------------
+# Output structure + bookkeeping files
+#------------------------------------------------------------------------------
+# runs/ : per (mode, seed) run directories
+# logs/ : reserved for top-level logs if you add more infrastructure later
 mkdir -p "$OUTROOT"/{runs,logs}
-STATUS_CSV="$OUTROOT/status.csv"
-SUMMARY_TXT="$OUTROOT/summary.txt"
-SUMMARY_HTML="$OUTROOT/summary.html"
 
+STATUS_CSV="$OUTROOT/status.csv"     # append-only event log (RUNNING + final)
+SUMMARY_TXT="$OUTROOT/summary.txt"   # human-readable 1-line summary per run
+SUMMARY_HTML="$OUTROOT/summary.html" # live + final HTML report
+
+# status.csv is intentionally append-only:
+# - We may write RUNNING early, then PASS/FAIL later
+# - HTML generator will keep only the last status per (mode,seed)
 echo "mode,seed,status,dir,log" > "$STATUS_CSV"
 : > "$SUMMARY_TXT"
 
-# Helpful "latest" pointer for quick GUI serving
+# Helpful stable pointer:
+# - out/latest always points to last regression output, so you can:
+#     cd out/latest && python3 -m http.server 8000
 mkdir -p "$PROJ_DIR/out"
 ln -sfn "$(realpath "$OUTROOT")" "$PROJ_DIR/out/latest"
 
-# ---------------------------
-# Optional build step (uncomment if you want)
-# ---------------------------
+#------------------------------------------------------------------------------
+# Optional build step (uncomment if you want the regression to auto-build simv)
+#------------------------------------------------------------------------------
+# Why it's commented:
+# - In many flows you already have a compiled simv
+# - Rebuilding for every regression can be slow / undesirable
 # if [[ ! -x "$SIMV" ]]; then
 #   echo "[BUILD] simv not found. Building..."
 #   vcs -full64 -sverilog -timescale=1ns/1ps -l "$OUTROOT/comp.log" \
 #       -debug_access+all -kdb -f filelist.f
 # fi
 
-# ---------------------------
-# Run one job
-# ---------------------------
+#------------------------------------------------------------------------------
+# Run one (mode, seed)
+#------------------------------------------------------------------------------
+# Responsibilities:
+# 1) Create run directory
+# 2) Mark RUNNING in status.csv
+# 3) Execute simv with correct plusargs
+# 4) Parse log for UVM_FATAL/UVM_ERROR summary => PASS/FAIL
+# 5) Append final PASS/FAIL row to status.csv + 1-line to summary.txt
 run_one() {
   local mode_name="$1"
   local mode_args="$2"
@@ -148,10 +223,12 @@ run_one() {
   local logfile="$rundir/sim.log"
   mkdir -p "$rundir"
 
-  # Mark running
+  # Mark running (append-only)
+  # Note: we do not "edit" existing rows; HTML will resolve latest status.
   echo "${mode_name},${seed},RUNNING,${rundir},${logfile}" >> "$STATUS_CSV"
 
-  # Run
+  # Run (always in its own rundir for clean artifacts)
+  # cmdline.txt is useful when debugging from the GUI: exact command is captured.
   (
      cd "$rundir"
      echo "[CMD] $SIMV +UVM_TESTNAME=$UVM_TESTNAME +ntb_random_seed=$seed -l sim.log $mode_args" > cmdline.txt
@@ -161,8 +238,17 @@ run_one() {
        -l sim.log \
        $mode_args
   ) || true
+  # We swallow the simv exit code on purpose:
+  # - Some failures still produce a log with useful info.
+  # - PASS/FAIL is decided by log scanning (below), not by exit status.
 
-  # Decide PASS/FAIL
+  # Decide PASS/FAIL:
+  # Current policy:
+  # - FAIL if log missing
+  # - FAIL if log contains "UVM_ERROR : [1-9]" or "UVM_FATAL : [1-9]"
+  # - Otherwise PASS
+  #
+  # (If you later want stricter rules, add patterns here.)
   local status="PASS"
 
   if [[ ! -f "$logfile" ]]; then
@@ -175,16 +261,19 @@ run_one() {
 
   echo "[$status] mode=$mode_name seed=$seed  log=$logfile" >> "$SUMMARY_TXT"
 
-  # Append final status row
+  # Append final status row (append-only)
   echo "${mode_name},${seed},${status},${rundir},${logfile}" >> "$STATUS_CSV"
 }
 
+# Export for xargs worker shells
 export -f run_one
 export UVM_TESTNAME SIMV OUTROOT STATUS_CSV SUMMARY_TXT
 
-# ---------------------------
+#------------------------------------------------------------------------------
 # Launch all (parallel)
-# ---------------------------
+#------------------------------------------------------------------------------
+# Build a job list first, then feed it to xargs -P for concurrency.
+# Doing this via a file makes the run reproducible (you can re-run a subset).
 echo "[INFO] OUTROOT=$OUTROOT"
 echo "[INFO] TEST=$UVM_TESTNAME"
 echo "[INFO] TEST_SET=$TEST_SET"
@@ -195,7 +284,13 @@ echo
 jobs_file="$OUTROOT/jobs.list"
 : > "$jobs_file"
 
-# Encode/decode helper (no external deps beyond python3)
+#------------------------------------------------------------------------------
+# Encode/decode helper for mode_args
+#------------------------------------------------------------------------------
+# Why:
+# - xargs splits on spaces, so passing arbitrary plusarg strings is messy.
+# - We encode mode_args into a single token via base64.
+# - We decode inside the worker before calling run_one.
 b64enc() { python3 - <<'PY' "$1"
 import base64, sys
 print(base64.b64encode(sys.argv[1].encode()).decode())
@@ -209,6 +304,7 @@ PY
 }
 
 # Build jobs as 3 safe tokens: mode_name seed mode_args_b64
+# Format per line: "<mode_name> <seed> <mode_args_b64>"
 for m in "${MODES[@]}"; do
   mode_name="${m%%|*}"
   mode_args="${m#*|}"
@@ -218,6 +314,9 @@ for m in "${MODES[@]}"; do
   done
 done
 
+# One worker invocation:
+# - decode b64 mode args
+# - run the simulation
 worker() {
   local mode_name="$1"
   local seed="$2"
@@ -229,10 +328,14 @@ worker() {
 
 export -f worker b64dec
 
-# ---------------------------
-# HTML generator (Firefox/Chrome compatible)
-# (ES5-only JS; UTF-8 output; no fancy unicode required)
-# ---------------------------
+#------------------------------------------------------------------------------
+# HTML generator + live updater
+#------------------------------------------------------------------------------
+# Per your request: we treat the HTML/report section as a "black box" here.
+# You already wrote it as a self-contained block, and it’s not part of the
+# core regression mechanics. The relevant documented parts are everything else.
+#------------------------------------------------------------------------------
+
 export STATUS_CSV SUMMARY_HTML
 
 regen_html() {
@@ -771,9 +874,11 @@ with open(summary_html, "w", encoding="utf-8") as f:
 PY
 }
 
-# ---------------------------
-# Live HTML updater (full GUI during run)
-# ---------------------------
+#------------------------------------------------------------------------------
+# Live HTML updater
+#------------------------------------------------------------------------------
+# Runs in the background while sims execute, regenerating summary.html periodically.
+# We capture its PID and ensure cleanup via trap (even if regression aborts).
 (
   while true; do
     regen_html
@@ -783,18 +888,24 @@ PY
 UPDATER_PID=$!
 trap 'kill $UPDATER_PID 2>/dev/null || true' EXIT
 
-# ---------------------------
-# Execute jobs
-# ---------------------------
+#------------------------------------------------------------------------------
+# Execute jobs (parallel)
+#------------------------------------------------------------------------------
+# jobs.list lines contain: mode_name seed mode_args_b64
+# xargs passes them to worker("$0","$1","$2") via bash -lc trick:
+# - "$0" receives mode_name
+# - "$1" receives seed
+# - "$2" receives mode_b64
 cat "$jobs_file" | xargs -P "$JOBS" -n 3 bash -lc 'worker "$0" "$1" "$2"'
 
 # Stop live updater and write final report once
 kill "$UPDATER_PID" 2>/dev/null || true
 regen_html
 
-# ---------------------------
-# Helper: easy report launch
-# ---------------------------
+#------------------------------------------------------------------------------
+# Helper: easy report launch (created inside OUTROOT)
+#------------------------------------------------------------------------------
+# This is intentionally generated per regression so you can run it from anywhere.
 cat > "$OUTROOT/serve_report.sh" <<'EOF'
 #!/usr/bin/env bash
 set -euo pipefail
@@ -805,6 +916,9 @@ python3 -m http.server 8000
 EOF
 chmod +x "$OUTROOT/serve_report.sh"
 
+#------------------------------------------------------------------------------
+# Final user-facing summary
+#------------------------------------------------------------------------------
 echo
 echo "[DONE] Text summary : $SUMMARY_TXT"
 echo "[DONE] HTML summary : $SUMMARY_HTML"

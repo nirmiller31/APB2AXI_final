@@ -34,4 +34,20 @@ echo
 # ---------------------------
 # Dispatch to bash launcher
 # ---------------------------
-exec bash $PROJECT_HOME/scripts/reg_launch.sh
+# ---------------------------
+# Force PROJECT_HOME based on this script's location (tcsh-safe)
+# ---------------------------
+set script_dir = "$0:h"
+if ("$script_dir" == "$0") then
+  # If $0 has no '/', assume current directory
+  set script_dir = "."
+endif
+
+set script_dir = `cd "$script_dir" && pwd`
+set proj_dir   = `cd "$script_dir/.." && pwd`
+
+setenv PROJECT_HOME "$proj_dir"
+echo "[INFO] Forced PROJECT_HOME = $PROJECT_HOME"
+
+# Dispatch to the bash launcher from the same tree
+exec bash "$PROJECT_HOME/scripts/reg_launch.sh"
