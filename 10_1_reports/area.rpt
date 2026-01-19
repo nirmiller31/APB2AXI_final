@@ -1,0 +1,32 @@
+ 
+****************************************
+Report : area
+Design : apb2axi
+Version: U-2022.12
+Date   : Mon Jan 19 20:43:16 2026
+****************************************
+
+Information: Updating design information... (UID-85)
+Warning: Design 'apb2axi' contains 2 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Library(s) Used:
+
+    tsl18fs120_typ (File: /tools/kits/tower/PDK_TS18SL/FS120_STD_Cells_0_18um_2005_12/DW_TOWER_tsl18fs120/2005.12/synopsys/2004.12/models/tsl18fs120_typ.db)
+
+Number of ports:                         7186
+Number of nets:                        127039
+Number of cells:                       109047
+Number of combinational cells:          80333
+Number of sequential cells:             28492
+Number of macros/black boxes:               0
+Number of buf/inv:                      23596
+Number of references:                      13
+
+Combinational area:             121056.750000
+Buf/Inv area:                    30246.000000
+Noncombinational area:          143282.750000
+Macro/Black Box area:                0.000000
+Net Interconnect area:          118482.310176
+
+Total cell area:                264339.500000
+Total area:                     382821.810176
+1

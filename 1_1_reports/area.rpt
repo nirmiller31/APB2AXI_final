@@ -1,0 +1,30 @@
+ 
+****************************************
+Report : area
+Design : apb2axi
+Version: U-2022.12
+Date   : Mon Jan 19 20:02:06 2026
+****************************************
+
+Library(s) Used:
+
+    tsl18fs120_typ (File: /tools/kits/tower/PDK_TS18SL/FS120_STD_Cells_0_18um_2005_12/DW_TOWER_tsl18fs120/2005.12/synopsys/2004.12/models/tsl18fs120_typ.db)
+
+Number of ports:                         7186
+Number of nets:                        114075
+Number of cells:                       107719
+Number of combinational cells:          78997
+Number of sequential cells:             28514
+Number of macros/black boxes:               0
+Number of buf/inv:                      21403
+Number of references:                      13
+
+Combinational area:             119388.000000
+Buf/Inv area:                    19246.500000
+Noncombinational area:          138134.000000
+Macro/Black Box area:                0.000000
+Net Interconnect area:          118738.206378
+
+Total cell area:                257522.000000
+Total area:                     376260.206378
+1

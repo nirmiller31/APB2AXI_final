@@ -1,0 +1,137 @@
+Loading db file '/tools/kits/tower/PDK_TS18SL/FS120_STD_Cells_0_18um_2005_12/DW_TOWER_tsl18fs120/2005.12/synopsys/2004.12/models/tsl18fs120_typ.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : apb2axi
+Version: U-2022.12
+Date   : Mon Jan 19 21:21:11 2026
+****************************************
+
+
+Library(s) Used:
+
+    tsl18fs120_typ (File: /tools/kits/tower/PDK_TS18SL/FS120_STD_Cells_0_18um_2005_12/DW_TOWER_tsl18fs120/2005.12/synopsys/2004.12/models/tsl18fs120_typ.db)
+
+
+Operating Conditions: tsl18fs120_typ   Library: tsl18fs120_typ
+Wire Load Model Mode: enclosed
+
+Design        Wire Load Model            Library
+------------------------------------------------
+apb2axi                280000            tsl18fs120_typ
+apb2axi_directory      35000             tsl18fs120_typ
+apb2axi_reg            4000              tsl18fs120_typ
+apb2axi_wr_packer      8000              tsl18fs120_typ
+apb2axi_response_handler
+                       280000            tsl18fs120_typ
+apb2axi_response_collector
+                       4000              tsl18fs120_typ
+apb2axi_txn_mgr        4000              tsl18fs120_typ
+apb2axi_write_builder  4000              tsl18fs120_typ
+apb2axi_read_builder_FIFO_ENTRY_W103
+                       4000              tsl18fs120_typ
+apb2axi_fifo_ENTRY_WIDTH103_FIFO_DEPTH16_0
+                       16000             tsl18fs120_typ
+apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16
+                       16000             tsl18fs120_typ
+apb2axi_fifo_ENTRY_WIDTH103_FIFO_DEPTH16_1
+                       16000             tsl18fs120_typ
+apb2axi_fifo_async_WIDTH24
+                       8000              tsl18fs120_typ
+apb2axi_fifo_async_WIDTH71
+                       16000             tsl18fs120_typ
+apb2axi_response_collector_DW01_inc_0_DW01_inc_37
+                       ForQA             tsl18fs120_typ
+apb2axi_response_collector_DW01_inc_1_DW01_inc_54
+                       ForQA             tsl18fs120_typ
+apb2axi_write_builder_DW01_inc_0_DW01_inc_36
+                       ForQA             tsl18fs120_typ
+apb2axi_fifo_ENTRY_WIDTH103_FIFO_DEPTH16_0_DW_fifo_s1_sf_0_DW_fifo_s1_sf_2
+                       16000             tsl18fs120_typ
+apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifo_s1_sf_0_DW_fifo_s1_sf_1
+                       16000             tsl18fs120_typ
+apb2axi_fifo_ENTRY_WIDTH103_FIFO_DEPTH16_1_DW_fifo_s1_sf_0
+                       16000             tsl18fs120_typ
+apb2axi_fifo_async_WIDTH24_DW_fifo_2c_df_0_DW_fifo_2c_df_1
+                       8000              tsl18fs120_typ
+apb2axi_fifo_async_WIDTH71_DW_fifo_2c_df_0
+                       16000             tsl18fs120_typ
+apb2axi_fifo_ENTRY_WIDTH103_FIFO_DEPTH16_0_DW_fifoctl_s1_sf_0_DW_fifoctl_s1_sf_2
+                       4000              tsl18fs120_typ
+apb2axi_fifo_ENTRY_WIDTH103_FIFO_DEPTH16_0_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_2
+                       16000             tsl18fs120_typ
+apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifoctl_s1_sf_0_DW_fifoctl_s1_sf_1
+                       4000              tsl18fs120_typ
+apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1
+                       16000             tsl18fs120_typ
+apb2axi_fifo_ENTRY_WIDTH103_FIFO_DEPTH16_1_DW_fifoctl_s1_sf_0
+                       4000              tsl18fs120_typ
+apb2axi_fifo_ENTRY_WIDTH103_FIFO_DEPTH16_1_DW_ram_r_w_s_dff_0
+                       16000             tsl18fs120_typ
+apb2axi_fifo_async_WIDTH24_DW_fifoctl_2c_df_0_DW_fifoctl_2c_df_1
+                       4000              tsl18fs120_typ
+apb2axi_fifo_async_WIDTH24_DW_ram_r_w_2c_dff_0_DW_ram_r_w_2c_dff_1
+                       4000              tsl18fs120_typ
+apb2axi_fifo_async_WIDTH71_DW_fifoctl_2c_df_0
+                       4000              tsl18fs120_typ
+apb2axi_fifo_async_WIDTH71_DW_ram_r_w_2c_dff_4
+                       16000             tsl18fs120_typ
+apb2axi_fifo_ENTRY_WIDTH103_FIFO_DEPTH16_0_DWsc_fifoctl_s1_df_0_DWsc_fifoctl_s1_df_2
+                       4000              tsl18fs120_typ
+apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DWsc_fifoctl_s1_df_0_DWsc_fifoctl_s1_df_1
+                       4000              tsl18fs120_typ
+apb2axi_fifo_ENTRY_WIDTH103_FIFO_DEPTH16_1_DWsc_fifoctl_s1_df_0
+                       4000              tsl18fs120_typ
+apb2axi_fifo_async_WIDTH24_DWsc_fifoctl_dif_0_DWsc_fifoctl_dif_1
+                       4000              tsl18fs120_typ
+apb2axi_fifo_async_WIDTH24_DW_gray_sync_0_DW_gray_sync_2
+                       4000              tsl18fs120_typ
+apb2axi_fifo_async_WIDTH24_DW_gray_sync_1_DW_gray_sync_3
+                       4000              tsl18fs120_typ
+apb2axi_fifo_async_WIDTH71_DWsc_fifoctl_dif_0
+                       4000              tsl18fs120_typ
+apb2axi_fifo_async_WIDTH71_DW_gray_sync_0
+                       4000              tsl18fs120_typ
+apb2axi_fifo_async_WIDTH71_DW_gray_sync_1
+                       4000              tsl18fs120_typ
+
+
+Global Operating Voltage = 1.8  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+Attributes
+----------
+i - Including register clock pin internal power
+
+
+  Cell Internal Power  = 602.4168 mW   (98%)
+  Net Switching Power  =  14.2384 mW    (2%)
+                         ---------
+Total Dynamic Power    = 616.6552 mW  (100%)
+
+Cell Leakage Power     =   5.4019 uW
+
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+memory             0.0000            0.0000            0.0000            0.0000  (   0.00%)
+black_box          0.0000            0.0000            0.0000            0.0000  (   0.00%)
+clock_network    597.9426            0.0000            0.0000          597.9426  (  97.00%)  i
+register           1.2506            0.2725        3.4426e+06            1.4859  (   0.24%)
+sequential     3.0147e-02        1.1151e-03        4.6414e+04        3.1309e-02  (   0.01%)
+combinational      3.0409           13.9646        1.9129e+06           17.0072  (   2.76%)
+--------------------------------------------------------------------------------------------------
+Total            602.2643 mW        14.2383 mW     5.4019e+06 pW       616.4669 mW
+1

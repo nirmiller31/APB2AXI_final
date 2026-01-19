@@ -1,0 +1,1313 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 10
+Design : apb2axi
+Version: U-2022.12
+Date   : Mon Jan 19 20:43:58 2026
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: tsl18fs120_typ   Library: tsl18fs120_typ
+Wire Load Model Mode: enclosed
+
+  Startpoint: u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_
+              (rising edge-triggered flip-flop clocked by ACLK)
+  Endpoint: u_wr_builder/wdata_reg_9_
+            (rising edge-triggered flip-flop clocked by ACLK)
+  Path Group: ACLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  apb2axi            280000                tsl18fs120_typ
+  apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifo_s1_sf_0_DW_fifo_s1_sf_1
+                     16000                 tsl18fs120_typ
+  apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1
+                     16000                 tsl18fs120_typ
+  apb2axi_write_builder
+                     4000                  tsl18fs120_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock ACLK (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_/CP (dfcrq1)
+                                                          0.00 #     0.00 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_/Q (dfcrq1)
+                                                          0.38       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DWsc_fifoctl_s1_df_0_DWsc_fifoctl_s1_df_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifoctl_s1_sf_0_DW_fifoctl_s1_sf_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U14/ZN (inv0d0)     0.26       0.63 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U21/Z (an02d0)      0.21       0.85 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U492/Z (buffd1)     0.14       0.99 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U2/Z (buffd1)       0.14       1.13 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U22/Z (buffd1)      0.26       1.39 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U1914/ZN (aoi22d1)
+                                                          0.20       1.59 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U1912/ZN (nd04d1)
+                                                          0.10       1.69 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U679/Z (mx02d1)     0.22       1.91 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/data_out[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1)
+                                                          0.00       1.91 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/data_out[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifo_s1_sf_0_DW_fifo_s1_sf_1)
+                                                          0.00       1.91 f
+  u_wr_data_apb2axi_fifo/pop_data[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16)
+                                                          0.00       1.91 f
+  u_wr_builder/wd_pop_data[74] (apb2axi_write_builder)
+                                                          0.00       1.91 f
+  u_wr_builder/U12/ZN (inv0d0)                            0.59       2.49 r
+  u_wr_builder/U20/ZN (nd03d0)                            1.10       3.59 f
+  u_wr_builder/U456/ZN (oai221d1)                         0.54       4.13 r
+  u_wr_builder/U197/ZN (inv0d0)                           0.11       4.24 f
+  u_wr_builder/U33/ZN (nd04d1)                            0.13       4.37 r
+  u_wr_builder/U426/Z (aor221d1)                          0.19       4.56 r
+  u_wr_builder/U416/ZN (aoim211d1)                        0.06       4.62 f
+  u_wr_builder/U409/ZN (aon211d1)                         0.14       4.76 r
+  u_wr_builder/U13/ZN (nd04d1)                            0.15       4.91 f
+  u_wr_builder/U4/Z (or02d1)                              0.24       5.15 f
+  u_wr_builder/U49/Z (buffd1)                             0.14       5.29 f
+  u_wr_builder/U50/ZN (inv0d0)                            1.12       6.41 r
+  u_wr_builder/U391/Z (aor22d1)                           0.10       6.51 r
+  u_wr_builder/wdata_reg_9_/D (dfnrq1)                    0.00       6.51 r
+  data arrival time                                                  6.51
+
+  clock ACLK (rise edge)                                  6.67       6.67
+  clock network delay (ideal)                             0.00       6.67
+  u_wr_builder/wdata_reg_9_/CP (dfnrq1)                   0.00       6.67 r
+  library setup time                                     -0.08       6.59
+  data required time                                                 6.59
+  --------------------------------------------------------------------------
+  data required time                                                 6.59
+  data arrival time                                                 -6.51
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.08
+
+
+  Startpoint: u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_
+              (rising edge-triggered flip-flop clocked by ACLK)
+  Endpoint: u_wr_builder/wdata_reg_8_
+            (rising edge-triggered flip-flop clocked by ACLK)
+  Path Group: ACLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  apb2axi            280000                tsl18fs120_typ
+  apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifo_s1_sf_0_DW_fifo_s1_sf_1
+                     16000                 tsl18fs120_typ
+  apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1
+                     16000                 tsl18fs120_typ
+  apb2axi_write_builder
+                     4000                  tsl18fs120_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock ACLK (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_/CP (dfcrq1)
+                                                          0.00 #     0.00 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_/Q (dfcrq1)
+                                                          0.38       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DWsc_fifoctl_s1_df_0_DWsc_fifoctl_s1_df_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifoctl_s1_sf_0_DW_fifoctl_s1_sf_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U14/ZN (inv0d0)     0.26       0.63 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U21/Z (an02d0)      0.21       0.85 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U492/Z (buffd1)     0.14       0.99 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U2/Z (buffd1)       0.14       1.13 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U22/Z (buffd1)      0.26       1.39 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U1914/ZN (aoi22d1)
+                                                          0.20       1.59 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U1912/ZN (nd04d1)
+                                                          0.10       1.69 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U679/Z (mx02d1)     0.22       1.91 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/data_out[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1)
+                                                          0.00       1.91 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/data_out[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifo_s1_sf_0_DW_fifo_s1_sf_1)
+                                                          0.00       1.91 f
+  u_wr_data_apb2axi_fifo/pop_data[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16)
+                                                          0.00       1.91 f
+  u_wr_builder/wd_pop_data[74] (apb2axi_write_builder)
+                                                          0.00       1.91 f
+  u_wr_builder/U12/ZN (inv0d0)                            0.59       2.49 r
+  u_wr_builder/U20/ZN (nd03d0)                            1.10       3.59 f
+  u_wr_builder/U456/ZN (oai221d1)                         0.54       4.13 r
+  u_wr_builder/U197/ZN (inv0d0)                           0.11       4.24 f
+  u_wr_builder/U33/ZN (nd04d1)                            0.13       4.37 r
+  u_wr_builder/U426/Z (aor221d1)                          0.19       4.56 r
+  u_wr_builder/U416/ZN (aoim211d1)                        0.06       4.62 f
+  u_wr_builder/U409/ZN (aon211d1)                         0.14       4.76 r
+  u_wr_builder/U13/ZN (nd04d1)                            0.15       4.91 f
+  u_wr_builder/U4/Z (or02d1)                              0.24       5.15 f
+  u_wr_builder/U49/Z (buffd1)                             0.14       5.29 f
+  u_wr_builder/U48/ZN (inv0d0)                            1.12       6.41 r
+  u_wr_builder/U392/Z (aor22d1)                           0.10       6.51 r
+  u_wr_builder/wdata_reg_8_/D (dfnrq1)                    0.00       6.51 r
+  data arrival time                                                  6.51
+
+  clock ACLK (rise edge)                                  6.67       6.67
+  clock network delay (ideal)                             0.00       6.67
+  u_wr_builder/wdata_reg_8_/CP (dfnrq1)                   0.00       6.67 r
+  library setup time                                     -0.08       6.59
+  data required time                                                 6.59
+  --------------------------------------------------------------------------
+  data required time                                                 6.59
+  data arrival time                                                 -6.51
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.08
+
+
+  Startpoint: u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_
+              (rising edge-triggered flip-flop clocked by ACLK)
+  Endpoint: u_wr_builder/wdata_reg_7_
+            (rising edge-triggered flip-flop clocked by ACLK)
+  Path Group: ACLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  apb2axi            280000                tsl18fs120_typ
+  apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifo_s1_sf_0_DW_fifo_s1_sf_1
+                     16000                 tsl18fs120_typ
+  apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1
+                     16000                 tsl18fs120_typ
+  apb2axi_write_builder
+                     4000                  tsl18fs120_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock ACLK (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_/CP (dfcrq1)
+                                                          0.00 #     0.00 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_/Q (dfcrq1)
+                                                          0.38       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DWsc_fifoctl_s1_df_0_DWsc_fifoctl_s1_df_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifoctl_s1_sf_0_DW_fifoctl_s1_sf_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U14/ZN (inv0d0)     0.26       0.63 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U21/Z (an02d0)      0.21       0.85 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U492/Z (buffd1)     0.14       0.99 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U2/Z (buffd1)       0.14       1.13 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U22/Z (buffd1)      0.26       1.39 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U1914/ZN (aoi22d1)
+                                                          0.20       1.59 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U1912/ZN (nd04d1)
+                                                          0.10       1.69 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U679/Z (mx02d1)     0.22       1.91 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/data_out[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1)
+                                                          0.00       1.91 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/data_out[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifo_s1_sf_0_DW_fifo_s1_sf_1)
+                                                          0.00       1.91 f
+  u_wr_data_apb2axi_fifo/pop_data[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16)
+                                                          0.00       1.91 f
+  u_wr_builder/wd_pop_data[74] (apb2axi_write_builder)
+                                                          0.00       1.91 f
+  u_wr_builder/U12/ZN (inv0d0)                            0.59       2.49 r
+  u_wr_builder/U20/ZN (nd03d0)                            1.10       3.59 f
+  u_wr_builder/U456/ZN (oai221d1)                         0.54       4.13 r
+  u_wr_builder/U197/ZN (inv0d0)                           0.11       4.24 f
+  u_wr_builder/U33/ZN (nd04d1)                            0.13       4.37 r
+  u_wr_builder/U426/Z (aor221d1)                          0.19       4.56 r
+  u_wr_builder/U416/ZN (aoim211d1)                        0.06       4.62 f
+  u_wr_builder/U409/ZN (aon211d1)                         0.14       4.76 r
+  u_wr_builder/U13/ZN (nd04d1)                            0.15       4.91 f
+  u_wr_builder/U4/Z (or02d1)                              0.24       5.15 f
+  u_wr_builder/U49/Z (buffd1)                             0.14       5.29 f
+  u_wr_builder/U48/ZN (inv0d0)                            1.12       6.41 r
+  u_wr_builder/U393/Z (aor22d1)                           0.10       6.51 r
+  u_wr_builder/wdata_reg_7_/D (dfnrq1)                    0.00       6.51 r
+  data arrival time                                                  6.51
+
+  clock ACLK (rise edge)                                  6.67       6.67
+  clock network delay (ideal)                             0.00       6.67
+  u_wr_builder/wdata_reg_7_/CP (dfnrq1)                   0.00       6.67 r
+  library setup time                                     -0.08       6.59
+  data required time                                                 6.59
+  --------------------------------------------------------------------------
+  data required time                                                 6.59
+  data arrival time                                                 -6.51
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.08
+
+
+  Startpoint: u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_
+              (rising edge-triggered flip-flop clocked by ACLK)
+  Endpoint: u_wr_builder/wdata_reg_6_
+            (rising edge-triggered flip-flop clocked by ACLK)
+  Path Group: ACLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  apb2axi            280000                tsl18fs120_typ
+  apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifo_s1_sf_0_DW_fifo_s1_sf_1
+                     16000                 tsl18fs120_typ
+  apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1
+                     16000                 tsl18fs120_typ
+  apb2axi_write_builder
+                     4000                  tsl18fs120_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock ACLK (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_/CP (dfcrq1)
+                                                          0.00 #     0.00 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_/Q (dfcrq1)
+                                                          0.38       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DWsc_fifoctl_s1_df_0_DWsc_fifoctl_s1_df_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifoctl_s1_sf_0_DW_fifoctl_s1_sf_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U14/ZN (inv0d0)     0.26       0.63 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U21/Z (an02d0)      0.21       0.85 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U492/Z (buffd1)     0.14       0.99 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U2/Z (buffd1)       0.14       1.13 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U22/Z (buffd1)      0.26       1.39 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U1914/ZN (aoi22d1)
+                                                          0.20       1.59 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U1912/ZN (nd04d1)
+                                                          0.10       1.69 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U679/Z (mx02d1)     0.22       1.91 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/data_out[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1)
+                                                          0.00       1.91 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/data_out[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifo_s1_sf_0_DW_fifo_s1_sf_1)
+                                                          0.00       1.91 f
+  u_wr_data_apb2axi_fifo/pop_data[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16)
+                                                          0.00       1.91 f
+  u_wr_builder/wd_pop_data[74] (apb2axi_write_builder)
+                                                          0.00       1.91 f
+  u_wr_builder/U12/ZN (inv0d0)                            0.59       2.49 r
+  u_wr_builder/U20/ZN (nd03d0)                            1.10       3.59 f
+  u_wr_builder/U456/ZN (oai221d1)                         0.54       4.13 r
+  u_wr_builder/U197/ZN (inv0d0)                           0.11       4.24 f
+  u_wr_builder/U33/ZN (nd04d1)                            0.13       4.37 r
+  u_wr_builder/U426/Z (aor221d1)                          0.19       4.56 r
+  u_wr_builder/U416/ZN (aoim211d1)                        0.06       4.62 f
+  u_wr_builder/U409/ZN (aon211d1)                         0.14       4.76 r
+  u_wr_builder/U13/ZN (nd04d1)                            0.15       4.91 f
+  u_wr_builder/U4/Z (or02d1)                              0.24       5.15 f
+  u_wr_builder/U49/Z (buffd1)                             0.14       5.29 f
+  u_wr_builder/U48/ZN (inv0d0)                            1.12       6.41 r
+  u_wr_builder/U394/Z (aor22d1)                           0.10       6.51 r
+  u_wr_builder/wdata_reg_6_/D (dfnrq1)                    0.00       6.51 r
+  data arrival time                                                  6.51
+
+  clock ACLK (rise edge)                                  6.67       6.67
+  clock network delay (ideal)                             0.00       6.67
+  u_wr_builder/wdata_reg_6_/CP (dfnrq1)                   0.00       6.67 r
+  library setup time                                     -0.08       6.59
+  data required time                                                 6.59
+  --------------------------------------------------------------------------
+  data required time                                                 6.59
+  data arrival time                                                 -6.51
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.08
+
+
+  Startpoint: u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_
+              (rising edge-triggered flip-flop clocked by ACLK)
+  Endpoint: u_wr_builder/wdata_reg_5_
+            (rising edge-triggered flip-flop clocked by ACLK)
+  Path Group: ACLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  apb2axi            280000                tsl18fs120_typ
+  apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifo_s1_sf_0_DW_fifo_s1_sf_1
+                     16000                 tsl18fs120_typ
+  apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1
+                     16000                 tsl18fs120_typ
+  apb2axi_write_builder
+                     4000                  tsl18fs120_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock ACLK (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_/CP (dfcrq1)
+                                                          0.00 #     0.00 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_/Q (dfcrq1)
+                                                          0.38       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DWsc_fifoctl_s1_df_0_DWsc_fifoctl_s1_df_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifoctl_s1_sf_0_DW_fifoctl_s1_sf_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U14/ZN (inv0d0)     0.26       0.63 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U21/Z (an02d0)      0.21       0.85 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U492/Z (buffd1)     0.14       0.99 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U2/Z (buffd1)       0.14       1.13 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U22/Z (buffd1)      0.26       1.39 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U1914/ZN (aoi22d1)
+                                                          0.20       1.59 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U1912/ZN (nd04d1)
+                                                          0.10       1.69 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U679/Z (mx02d1)     0.22       1.91 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/data_out[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1)
+                                                          0.00       1.91 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/data_out[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifo_s1_sf_0_DW_fifo_s1_sf_1)
+                                                          0.00       1.91 f
+  u_wr_data_apb2axi_fifo/pop_data[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16)
+                                                          0.00       1.91 f
+  u_wr_builder/wd_pop_data[74] (apb2axi_write_builder)
+                                                          0.00       1.91 f
+  u_wr_builder/U12/ZN (inv0d0)                            0.59       2.49 r
+  u_wr_builder/U20/ZN (nd03d0)                            1.10       3.59 f
+  u_wr_builder/U456/ZN (oai221d1)                         0.54       4.13 r
+  u_wr_builder/U197/ZN (inv0d0)                           0.11       4.24 f
+  u_wr_builder/U33/ZN (nd04d1)                            0.13       4.37 r
+  u_wr_builder/U426/Z (aor221d1)                          0.19       4.56 r
+  u_wr_builder/U416/ZN (aoim211d1)                        0.06       4.62 f
+  u_wr_builder/U409/ZN (aon211d1)                         0.14       4.76 r
+  u_wr_builder/U13/ZN (nd04d1)                            0.15       4.91 f
+  u_wr_builder/U4/Z (or02d1)                              0.24       5.15 f
+  u_wr_builder/U49/Z (buffd1)                             0.14       5.29 f
+  u_wr_builder/U48/ZN (inv0d0)                            1.12       6.41 r
+  u_wr_builder/U395/Z (aor22d1)                           0.10       6.51 r
+  u_wr_builder/wdata_reg_5_/D (dfnrq1)                    0.00       6.51 r
+  data arrival time                                                  6.51
+
+  clock ACLK (rise edge)                                  6.67       6.67
+  clock network delay (ideal)                             0.00       6.67
+  u_wr_builder/wdata_reg_5_/CP (dfnrq1)                   0.00       6.67 r
+  library setup time                                     -0.08       6.59
+  data required time                                                 6.59
+  --------------------------------------------------------------------------
+  data required time                                                 6.59
+  data arrival time                                                 -6.51
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.08
+
+
+  Startpoint: u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_
+              (rising edge-triggered flip-flop clocked by ACLK)
+  Endpoint: u_wr_builder/wdata_reg_4_
+            (rising edge-triggered flip-flop clocked by ACLK)
+  Path Group: ACLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  apb2axi            280000                tsl18fs120_typ
+  apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifo_s1_sf_0_DW_fifo_s1_sf_1
+                     16000                 tsl18fs120_typ
+  apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1
+                     16000                 tsl18fs120_typ
+  apb2axi_write_builder
+                     4000                  tsl18fs120_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock ACLK (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_/CP (dfcrq1)
+                                                          0.00 #     0.00 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_/Q (dfcrq1)
+                                                          0.38       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DWsc_fifoctl_s1_df_0_DWsc_fifoctl_s1_df_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifoctl_s1_sf_0_DW_fifoctl_s1_sf_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U14/ZN (inv0d0)     0.26       0.63 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U21/Z (an02d0)      0.21       0.85 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U492/Z (buffd1)     0.14       0.99 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U2/Z (buffd1)       0.14       1.13 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U22/Z (buffd1)      0.26       1.39 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U1914/ZN (aoi22d1)
+                                                          0.20       1.59 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U1912/ZN (nd04d1)
+                                                          0.10       1.69 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U679/Z (mx02d1)     0.22       1.91 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/data_out[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1)
+                                                          0.00       1.91 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/data_out[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifo_s1_sf_0_DW_fifo_s1_sf_1)
+                                                          0.00       1.91 f
+  u_wr_data_apb2axi_fifo/pop_data[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16)
+                                                          0.00       1.91 f
+  u_wr_builder/wd_pop_data[74] (apb2axi_write_builder)
+                                                          0.00       1.91 f
+  u_wr_builder/U12/ZN (inv0d0)                            0.59       2.49 r
+  u_wr_builder/U20/ZN (nd03d0)                            1.10       3.59 f
+  u_wr_builder/U456/ZN (oai221d1)                         0.54       4.13 r
+  u_wr_builder/U197/ZN (inv0d0)                           0.11       4.24 f
+  u_wr_builder/U33/ZN (nd04d1)                            0.13       4.37 r
+  u_wr_builder/U426/Z (aor221d1)                          0.19       4.56 r
+  u_wr_builder/U416/ZN (aoim211d1)                        0.06       4.62 f
+  u_wr_builder/U409/ZN (aon211d1)                         0.14       4.76 r
+  u_wr_builder/U13/ZN (nd04d1)                            0.15       4.91 f
+  u_wr_builder/U4/Z (or02d1)                              0.24       5.15 f
+  u_wr_builder/U49/Z (buffd1)                             0.14       5.29 f
+  u_wr_builder/U48/ZN (inv0d0)                            1.12       6.41 r
+  u_wr_builder/U396/Z (aor22d1)                           0.10       6.51 r
+  u_wr_builder/wdata_reg_4_/D (dfnrq1)                    0.00       6.51 r
+  data arrival time                                                  6.51
+
+  clock ACLK (rise edge)                                  6.67       6.67
+  clock network delay (ideal)                             0.00       6.67
+  u_wr_builder/wdata_reg_4_/CP (dfnrq1)                   0.00       6.67 r
+  library setup time                                     -0.08       6.59
+  data required time                                                 6.59
+  --------------------------------------------------------------------------
+  data required time                                                 6.59
+  data arrival time                                                 -6.51
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.08
+
+
+  Startpoint: u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_
+              (rising edge-triggered flip-flop clocked by ACLK)
+  Endpoint: u_wr_builder/wdata_reg_3_
+            (rising edge-triggered flip-flop clocked by ACLK)
+  Path Group: ACLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  apb2axi            280000                tsl18fs120_typ
+  apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifo_s1_sf_0_DW_fifo_s1_sf_1
+                     16000                 tsl18fs120_typ
+  apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1
+                     16000                 tsl18fs120_typ
+  apb2axi_write_builder
+                     4000                  tsl18fs120_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock ACLK (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_/CP (dfcrq1)
+                                                          0.00 #     0.00 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_/Q (dfcrq1)
+                                                          0.38       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DWsc_fifoctl_s1_df_0_DWsc_fifoctl_s1_df_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifoctl_s1_sf_0_DW_fifoctl_s1_sf_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U14/ZN (inv0d0)     0.26       0.63 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U21/Z (an02d0)      0.21       0.85 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U492/Z (buffd1)     0.14       0.99 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U2/Z (buffd1)       0.14       1.13 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U22/Z (buffd1)      0.26       1.39 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U1914/ZN (aoi22d1)
+                                                          0.20       1.59 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U1912/ZN (nd04d1)
+                                                          0.10       1.69 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U679/Z (mx02d1)     0.22       1.91 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/data_out[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1)
+                                                          0.00       1.91 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/data_out[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifo_s1_sf_0_DW_fifo_s1_sf_1)
+                                                          0.00       1.91 f
+  u_wr_data_apb2axi_fifo/pop_data[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16)
+                                                          0.00       1.91 f
+  u_wr_builder/wd_pop_data[74] (apb2axi_write_builder)
+                                                          0.00       1.91 f
+  u_wr_builder/U12/ZN (inv0d0)                            0.59       2.49 r
+  u_wr_builder/U20/ZN (nd03d0)                            1.10       3.59 f
+  u_wr_builder/U456/ZN (oai221d1)                         0.54       4.13 r
+  u_wr_builder/U197/ZN (inv0d0)                           0.11       4.24 f
+  u_wr_builder/U33/ZN (nd04d1)                            0.13       4.37 r
+  u_wr_builder/U426/Z (aor221d1)                          0.19       4.56 r
+  u_wr_builder/U416/ZN (aoim211d1)                        0.06       4.62 f
+  u_wr_builder/U409/ZN (aon211d1)                         0.14       4.76 r
+  u_wr_builder/U13/ZN (nd04d1)                            0.15       4.91 f
+  u_wr_builder/U4/Z (or02d1)                              0.24       5.15 f
+  u_wr_builder/U49/Z (buffd1)                             0.14       5.29 f
+  u_wr_builder/U48/ZN (inv0d0)                            1.12       6.41 r
+  u_wr_builder/U397/Z (aor22d1)                           0.10       6.51 r
+  u_wr_builder/wdata_reg_3_/D (dfnrq1)                    0.00       6.51 r
+  data arrival time                                                  6.51
+
+  clock ACLK (rise edge)                                  6.67       6.67
+  clock network delay (ideal)                             0.00       6.67
+  u_wr_builder/wdata_reg_3_/CP (dfnrq1)                   0.00       6.67 r
+  library setup time                                     -0.08       6.59
+  data required time                                                 6.59
+  --------------------------------------------------------------------------
+  data required time                                                 6.59
+  data arrival time                                                 -6.51
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.08
+
+
+  Startpoint: u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_
+              (rising edge-triggered flip-flop clocked by ACLK)
+  Endpoint: u_wr_builder/wdata_reg_2_
+            (rising edge-triggered flip-flop clocked by ACLK)
+  Path Group: ACLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  apb2axi            280000                tsl18fs120_typ
+  apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifo_s1_sf_0_DW_fifo_s1_sf_1
+                     16000                 tsl18fs120_typ
+  apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1
+                     16000                 tsl18fs120_typ
+  apb2axi_write_builder
+                     4000                  tsl18fs120_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock ACLK (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_/CP (dfcrq1)
+                                                          0.00 #     0.00 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_/Q (dfcrq1)
+                                                          0.38       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DWsc_fifoctl_s1_df_0_DWsc_fifoctl_s1_df_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifoctl_s1_sf_0_DW_fifoctl_s1_sf_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U14/ZN (inv0d0)     0.26       0.63 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U21/Z (an02d0)      0.21       0.85 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U492/Z (buffd1)     0.14       0.99 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U2/Z (buffd1)       0.14       1.13 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U22/Z (buffd1)      0.26       1.39 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U1914/ZN (aoi22d1)
+                                                          0.20       1.59 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U1912/ZN (nd04d1)
+                                                          0.10       1.69 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U679/Z (mx02d1)     0.22       1.91 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/data_out[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1)
+                                                          0.00       1.91 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/data_out[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifo_s1_sf_0_DW_fifo_s1_sf_1)
+                                                          0.00       1.91 f
+  u_wr_data_apb2axi_fifo/pop_data[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16)
+                                                          0.00       1.91 f
+  u_wr_builder/wd_pop_data[74] (apb2axi_write_builder)
+                                                          0.00       1.91 f
+  u_wr_builder/U12/ZN (inv0d0)                            0.59       2.49 r
+  u_wr_builder/U20/ZN (nd03d0)                            1.10       3.59 f
+  u_wr_builder/U456/ZN (oai221d1)                         0.54       4.13 r
+  u_wr_builder/U197/ZN (inv0d0)                           0.11       4.24 f
+  u_wr_builder/U33/ZN (nd04d1)                            0.13       4.37 r
+  u_wr_builder/U426/Z (aor221d1)                          0.19       4.56 r
+  u_wr_builder/U416/ZN (aoim211d1)                        0.06       4.62 f
+  u_wr_builder/U409/ZN (aon211d1)                         0.14       4.76 r
+  u_wr_builder/U13/ZN (nd04d1)                            0.15       4.91 f
+  u_wr_builder/U4/Z (or02d1)                              0.24       5.15 f
+  u_wr_builder/U49/Z (buffd1)                             0.14       5.29 f
+  u_wr_builder/U48/ZN (inv0d0)                            1.12       6.41 r
+  u_wr_builder/U398/Z (aor22d1)                           0.10       6.51 r
+  u_wr_builder/wdata_reg_2_/D (dfnrq1)                    0.00       6.51 r
+  data arrival time                                                  6.51
+
+  clock ACLK (rise edge)                                  6.67       6.67
+  clock network delay (ideal)                             0.00       6.67
+  u_wr_builder/wdata_reg_2_/CP (dfnrq1)                   0.00       6.67 r
+  library setup time                                     -0.08       6.59
+  data required time                                                 6.59
+  --------------------------------------------------------------------------
+  data required time                                                 6.59
+  data arrival time                                                 -6.51
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.08
+
+
+  Startpoint: u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_
+              (rising edge-triggered flip-flop clocked by ACLK)
+  Endpoint: u_wr_builder/wdata_reg_1_
+            (rising edge-triggered flip-flop clocked by ACLK)
+  Path Group: ACLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  apb2axi            280000                tsl18fs120_typ
+  apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifo_s1_sf_0_DW_fifo_s1_sf_1
+                     16000                 tsl18fs120_typ
+  apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1
+                     16000                 tsl18fs120_typ
+  apb2axi_write_builder
+                     4000                  tsl18fs120_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock ACLK (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_/CP (dfcrq1)
+                                                          0.00 #     0.00 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_/Q (dfcrq1)
+                                                          0.38       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DWsc_fifoctl_s1_df_0_DWsc_fifoctl_s1_df_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifoctl_s1_sf_0_DW_fifoctl_s1_sf_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U14/ZN (inv0d0)     0.26       0.63 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U21/Z (an02d0)      0.21       0.85 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U492/Z (buffd1)     0.14       0.99 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U2/Z (buffd1)       0.14       1.13 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U22/Z (buffd1)      0.26       1.39 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U1914/ZN (aoi22d1)
+                                                          0.20       1.59 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U1912/ZN (nd04d1)
+                                                          0.10       1.69 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U679/Z (mx02d1)     0.22       1.91 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/data_out[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1)
+                                                          0.00       1.91 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/data_out[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifo_s1_sf_0_DW_fifo_s1_sf_1)
+                                                          0.00       1.91 f
+  u_wr_data_apb2axi_fifo/pop_data[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16)
+                                                          0.00       1.91 f
+  u_wr_builder/wd_pop_data[74] (apb2axi_write_builder)
+                                                          0.00       1.91 f
+  u_wr_builder/U12/ZN (inv0d0)                            0.59       2.49 r
+  u_wr_builder/U20/ZN (nd03d0)                            1.10       3.59 f
+  u_wr_builder/U456/ZN (oai221d1)                         0.54       4.13 r
+  u_wr_builder/U197/ZN (inv0d0)                           0.11       4.24 f
+  u_wr_builder/U33/ZN (nd04d1)                            0.13       4.37 r
+  u_wr_builder/U426/Z (aor221d1)                          0.19       4.56 r
+  u_wr_builder/U416/ZN (aoim211d1)                        0.06       4.62 f
+  u_wr_builder/U409/ZN (aon211d1)                         0.14       4.76 r
+  u_wr_builder/U13/ZN (nd04d1)                            0.15       4.91 f
+  u_wr_builder/U4/Z (or02d1)                              0.24       5.15 f
+  u_wr_builder/U49/Z (buffd1)                             0.14       5.29 f
+  u_wr_builder/U48/ZN (inv0d0)                            1.12       6.41 r
+  u_wr_builder/U399/Z (aor22d1)                           0.10       6.51 r
+  u_wr_builder/wdata_reg_1_/D (dfnrq1)                    0.00       6.51 r
+  data arrival time                                                  6.51
+
+  clock ACLK (rise edge)                                  6.67       6.67
+  clock network delay (ideal)                             0.00       6.67
+  u_wr_builder/wdata_reg_1_/CP (dfnrq1)                   0.00       6.67 r
+  library setup time                                     -0.08       6.59
+  data required time                                                 6.59
+  --------------------------------------------------------------------------
+  data required time                                                 6.59
+  data arrival time                                                 -6.51
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.08
+
+
+  Startpoint: u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_
+              (rising edge-triggered flip-flop clocked by ACLK)
+  Endpoint: u_wr_builder/wdata_reg_0_
+            (rising edge-triggered flip-flop clocked by ACLK)
+  Path Group: ACLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  apb2axi            280000                tsl18fs120_typ
+  apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifo_s1_sf_0_DW_fifo_s1_sf_1
+                     16000                 tsl18fs120_typ
+  apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1
+                     16000                 tsl18fs120_typ
+  apb2axi_write_builder
+                     4000                  tsl18fs120_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock ACLK (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_/CP (dfcrq1)
+                                                          0.00 #     0.00 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr_int_reg_0_/Q (dfcrq1)
+                                                          0.38       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/U1/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DWsc_fifoctl_s1_df_0_DWsc_fifoctl_s1_df_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U1/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifoctl_s1_sf_0_DW_fifoctl_s1_sf_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/rd_addr[0] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1)
+                                                          0.00       0.38 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U14/ZN (inv0d0)     0.26       0.63 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U21/Z (an02d0)      0.21       0.85 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U492/Z (buffd1)     0.14       0.99 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U2/Z (buffd1)       0.14       1.13 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U22/Z (buffd1)      0.26       1.39 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U1914/ZN (aoi22d1)
+                                                          0.20       1.59 r
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U1912/ZN (nd04d1)
+                                                          0.10       1.69 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/U679/Z (mx02d1)     0.22       1.91 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/U2/data_out[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_ram_r_w_s_dff_0_DW_ram_r_w_s_dff_1)
+                                                          0.00       1.91 f
+  u_wr_data_apb2axi_fifo/u_dw_fifo/data_out[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16_DW_fifo_s1_sf_0_DW_fifo_s1_sf_1)
+                                                          0.00       1.91 f
+  u_wr_data_apb2axi_fifo/pop_data[74] (apb2axi_fifo_ENTRY_WIDTH77_FIFO_DEPTH16)
+                                                          0.00       1.91 f
+  u_wr_builder/wd_pop_data[74] (apb2axi_write_builder)
+                                                          0.00       1.91 f
+  u_wr_builder/U12/ZN (inv0d0)                            0.59       2.49 r
+  u_wr_builder/U20/ZN (nd03d0)                            1.10       3.59 f
+  u_wr_builder/U456/ZN (oai221d1)                         0.54       4.13 r
+  u_wr_builder/U197/ZN (inv0d0)                           0.11       4.24 f
+  u_wr_builder/U33/ZN (nd04d1)                            0.13       4.37 r
+  u_wr_builder/U426/Z (aor221d1)                          0.19       4.56 r
+  u_wr_builder/U416/ZN (aoim211d1)                        0.06       4.62 f
+  u_wr_builder/U409/ZN (aon211d1)                         0.14       4.76 r
+  u_wr_builder/U13/ZN (nd04d1)                            0.15       4.91 f
+  u_wr_builder/U4/Z (or02d1)                              0.24       5.15 f
+  u_wr_builder/U49/Z (buffd1)                             0.14       5.29 f
+  u_wr_builder/U48/ZN (inv0d0)                            1.12       6.41 r
+  u_wr_builder/U400/Z (aor22d1)                           0.10       6.51 r
+  u_wr_builder/wdata_reg_0_/D (dfnrq1)                    0.00       6.51 r
+  data arrival time                                                  6.51
+
+  clock ACLK (rise edge)                                  6.67       6.67
+  clock network delay (ideal)                             0.00       6.67
+  u_wr_builder/wdata_reg_0_/CP (dfnrq1)                   0.00       6.67 r
+  library setup time                                     -0.08       6.59
+  data required time                                                 6.59
+  --------------------------------------------------------------------------
+  data required time                                                 6.59
+  data arrival time                                                 -6.51
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.08
+
+
+  Startpoint: u_directory/state_reg_8__1_
+              (rising edge-triggered flip-flop clocked by PCLK)
+  Endpoint: u_directory/state_reg_10__1_
+            (rising edge-triggered flip-flop clocked by PCLK)
+  Path Group: PCLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  apb2axi            280000                tsl18fs120_typ
+  apb2axi_directory  35000                 tsl18fs120_typ
+  apb2axi_txn_mgr    4000                  tsl18fs120_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock PCLK (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_directory/state_reg_8__1_/CP (dfnrb2)                 0.00 #     0.00 r
+  u_directory/state_reg_8__1_/QN (dfnrb2)                 0.30       0.30 f
+  u_directory/U290/ZN (nd02d2)                            0.07       0.37 r
+  u_directory/U508/ZN (inv0d2)                            0.03       0.41 f
+  u_directory/U4276/ZN (nr04d1)                           0.33       0.73 r
+  u_directory/U1037/ZN (nd02d2)                           0.09       0.82 f
+  u_directory/U1038/ZN (invbd2)                           0.06       0.88 r
+  u_directory/U1772/ZN (nd13d2)                           0.10       0.98 f
+  u_directory/U521/Z (ora311d2)                           0.20       1.18 f
+  u_directory/U1131/ZN (nd02d2)                           0.08       1.25 r
+  u_directory/U181/ZN (invbd2)                            0.06       1.31 f
+  u_directory/U481/ZN (nd02d1)                            0.06       1.38 r
+  u_directory/U7762/ZN (oaim311d1)                        0.16       1.54 r
+  u_directory/U7765/ZN (nd04d1)                           0.10       1.64 f
+  u_directory/U7767/ZN (nd03d2)                           0.10       1.74 r
+  u_directory/dir_mgr_pop_entry[102] (apb2axi_directory)
+                                                          0.00       1.74 r
+  u_txn_mgr/dir_mgr_pop_entry[102] (apb2axi_txn_mgr)      0.00       1.74 r
+  u_txn_mgr/U6/ZN (inv0d2)                                0.04       1.78 f
+  u_txn_mgr/U8/ZN (nd02d2)                                0.04       1.82 r
+  u_txn_mgr/U10/Z (an03d4)                                0.17       1.99 r
+  u_txn_mgr/dir_mgr_pop_rdy (apb2axi_txn_mgr)             0.00       1.99 r
+  u_directory/dir_mgr_pop_rdy (apb2axi_directory)         0.00       1.99 r
+  u_directory/U883/ZN (inv0d2)                            0.05       2.04 f
+  u_directory/U1157/Z (bufbd7)                            0.13       2.17 f
+  u_directory/U4365/ZN (oai321d1)                         0.31       2.48 r
+  u_directory/state_reg_10__1_/D (dfnrb2)                 0.00       2.48 r
+  data arrival time                                                  2.48
+
+  clock PCLK (rise edge)                                  0.67       0.67
+  clock network delay (ideal)                             0.00       0.67
+  u_directory/state_reg_10__1_/CP (dfnrb2)                0.00       0.67 r
+  library setup time                                     -0.12       0.55
+  data required time                                                 0.55
+  --------------------------------------------------------------------------
+  data required time                                                 0.55
+  data arrival time                                                 -2.48
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -1.93
+
+
+  Startpoint: u_directory/state_reg_8__1_
+              (rising edge-triggered flip-flop clocked by PCLK)
+  Endpoint: u_directory/state_reg_11__1_
+            (rising edge-triggered flip-flop clocked by PCLK)
+  Path Group: PCLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  apb2axi            280000                tsl18fs120_typ
+  apb2axi_directory  35000                 tsl18fs120_typ
+  apb2axi_txn_mgr    4000                  tsl18fs120_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock PCLK (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_directory/state_reg_8__1_/CP (dfnrb2)                 0.00 #     0.00 r
+  u_directory/state_reg_8__1_/QN (dfnrb2)                 0.30       0.30 f
+  u_directory/U290/ZN (nd02d2)                            0.07       0.37 r
+  u_directory/U508/ZN (inv0d2)                            0.03       0.41 f
+  u_directory/U4276/ZN (nr04d1)                           0.33       0.73 r
+  u_directory/U1037/ZN (nd02d2)                           0.09       0.82 f
+  u_directory/U1038/ZN (invbd2)                           0.06       0.88 r
+  u_directory/U1772/ZN (nd13d2)                           0.10       0.98 f
+  u_directory/U521/Z (ora311d2)                           0.20       1.18 f
+  u_directory/U1131/ZN (nd02d2)                           0.08       1.25 r
+  u_directory/U181/ZN (invbd2)                            0.06       1.31 f
+  u_directory/U481/ZN (nd02d1)                            0.06       1.38 r
+  u_directory/U7762/ZN (oaim311d1)                        0.16       1.54 r
+  u_directory/U7765/ZN (nd04d1)                           0.10       1.64 f
+  u_directory/U7767/ZN (nd03d2)                           0.10       1.74 r
+  u_directory/dir_mgr_pop_entry[102] (apb2axi_directory)
+                                                          0.00       1.74 r
+  u_txn_mgr/dir_mgr_pop_entry[102] (apb2axi_txn_mgr)      0.00       1.74 r
+  u_txn_mgr/U6/ZN (inv0d2)                                0.04       1.78 f
+  u_txn_mgr/U8/ZN (nd02d2)                                0.04       1.82 r
+  u_txn_mgr/U10/Z (an03d4)                                0.17       1.99 r
+  u_txn_mgr/dir_mgr_pop_rdy (apb2axi_txn_mgr)             0.00       1.99 r
+  u_directory/dir_mgr_pop_rdy (apb2axi_directory)         0.00       1.99 r
+  u_directory/U883/ZN (inv0d2)                            0.05       2.04 f
+  u_directory/U1157/Z (bufbd7)                            0.13       2.17 f
+  u_directory/U4358/ZN (oai321d1)                         0.31       2.48 r
+  u_directory/state_reg_11__1_/D (dfnrb2)                 0.00       2.48 r
+  data arrival time                                                  2.48
+
+  clock PCLK (rise edge)                                  0.67       0.67
+  clock network delay (ideal)                             0.00       0.67
+  u_directory/state_reg_11__1_/CP (dfnrb2)                0.00       0.67 r
+  library setup time                                     -0.12       0.55
+  data required time                                                 0.55
+  --------------------------------------------------------------------------
+  data required time                                                 0.55
+  data arrival time                                                 -2.48
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -1.93
+
+
+  Startpoint: u_directory/state_reg_8__1_
+              (rising edge-triggered flip-flop clocked by PCLK)
+  Endpoint: u_directory/state_reg_5__1_
+            (rising edge-triggered flip-flop clocked by PCLK)
+  Path Group: PCLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  apb2axi            280000                tsl18fs120_typ
+  apb2axi_directory  35000                 tsl18fs120_typ
+  apb2axi_txn_mgr    4000                  tsl18fs120_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock PCLK (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_directory/state_reg_8__1_/CP (dfnrb2)                 0.00 #     0.00 r
+  u_directory/state_reg_8__1_/QN (dfnrb2)                 0.30       0.30 f
+  u_directory/U290/ZN (nd02d2)                            0.07       0.37 r
+  u_directory/U508/ZN (inv0d2)                            0.03       0.41 f
+  u_directory/U4276/ZN (nr04d1)                           0.33       0.73 r
+  u_directory/U1037/ZN (nd02d2)                           0.09       0.82 f
+  u_directory/U1038/ZN (invbd2)                           0.06       0.88 r
+  u_directory/U1772/ZN (nd13d2)                           0.10       0.98 f
+  u_directory/U521/Z (ora311d2)                           0.20       1.18 f
+  u_directory/U1131/ZN (nd02d2)                           0.08       1.25 r
+  u_directory/U181/ZN (invbd2)                            0.06       1.31 f
+  u_directory/U481/ZN (nd02d1)                            0.06       1.38 r
+  u_directory/U7762/ZN (oaim311d1)                        0.16       1.54 r
+  u_directory/U7765/ZN (nd04d1)                           0.10       1.64 f
+  u_directory/U7767/ZN (nd03d2)                           0.10       1.74 r
+  u_directory/dir_mgr_pop_entry[102] (apb2axi_directory)
+                                                          0.00       1.74 r
+  u_txn_mgr/dir_mgr_pop_entry[102] (apb2axi_txn_mgr)      0.00       1.74 r
+  u_txn_mgr/U6/ZN (inv0d2)                                0.04       1.78 f
+  u_txn_mgr/U8/ZN (nd02d2)                                0.04       1.82 r
+  u_txn_mgr/U10/Z (an03d4)                                0.17       1.99 r
+  u_txn_mgr/dir_mgr_pop_rdy (apb2axi_txn_mgr)             0.00       1.99 r
+  u_directory/dir_mgr_pop_rdy (apb2axi_directory)         0.00       1.99 r
+  u_directory/U883/ZN (inv0d2)                            0.05       2.04 f
+  u_directory/U1157/Z (bufbd7)                            0.13       2.17 f
+  u_directory/U4374/ZN (oai321d1)                         0.31       2.48 r
+  u_directory/state_reg_5__1_/D (dfnrb2)                  0.00       2.48 r
+  data arrival time                                                  2.48
+
+  clock PCLK (rise edge)                                  0.67       0.67
+  clock network delay (ideal)                             0.00       0.67
+  u_directory/state_reg_5__1_/CP (dfnrb2)                 0.00       0.67 r
+  library setup time                                     -0.12       0.55
+  data required time                                                 0.55
+  --------------------------------------------------------------------------
+  data required time                                                 0.55
+  data arrival time                                                 -2.48
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -1.93
+
+
+  Startpoint: u_directory/state_reg_8__1_
+              (rising edge-triggered flip-flop clocked by PCLK)
+  Endpoint: u_directory/state_reg_12__1_
+            (rising edge-triggered flip-flop clocked by PCLK)
+  Path Group: PCLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  apb2axi            280000                tsl18fs120_typ
+  apb2axi_directory  35000                 tsl18fs120_typ
+  apb2axi_txn_mgr    4000                  tsl18fs120_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock PCLK (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_directory/state_reg_8__1_/CP (dfnrb2)                 0.00 #     0.00 r
+  u_directory/state_reg_8__1_/QN (dfnrb2)                 0.30       0.30 f
+  u_directory/U290/ZN (nd02d2)                            0.07       0.37 r
+  u_directory/U508/ZN (inv0d2)                            0.03       0.41 f
+  u_directory/U4276/ZN (nr04d1)                           0.33       0.73 r
+  u_directory/U1037/ZN (nd02d2)                           0.09       0.82 f
+  u_directory/U1038/ZN (invbd2)                           0.06       0.88 r
+  u_directory/U1772/ZN (nd13d2)                           0.10       0.98 f
+  u_directory/U521/Z (ora311d2)                           0.20       1.18 f
+  u_directory/U1131/ZN (nd02d2)                           0.08       1.25 r
+  u_directory/U181/ZN (invbd2)                            0.06       1.31 f
+  u_directory/U481/ZN (nd02d1)                            0.06       1.38 r
+  u_directory/U7762/ZN (oaim311d1)                        0.16       1.54 r
+  u_directory/U7765/ZN (nd04d1)                           0.10       1.64 f
+  u_directory/U7767/ZN (nd03d2)                           0.10       1.74 r
+  u_directory/dir_mgr_pop_entry[102] (apb2axi_directory)
+                                                          0.00       1.74 r
+  u_txn_mgr/dir_mgr_pop_entry[102] (apb2axi_txn_mgr)      0.00       1.74 r
+  u_txn_mgr/U6/ZN (inv0d2)                                0.04       1.78 f
+  u_txn_mgr/U8/ZN (nd02d2)                                0.04       1.82 r
+  u_txn_mgr/U10/Z (an03d4)                                0.17       1.99 r
+  u_txn_mgr/dir_mgr_pop_rdy (apb2axi_txn_mgr)             0.00       1.99 r
+  u_directory/dir_mgr_pop_rdy (apb2axi_directory)         0.00       1.99 r
+  u_directory/U883/ZN (inv0d2)                            0.05       2.04 f
+  u_directory/U1157/Z (bufbd7)                            0.13       2.17 f
+  u_directory/U4359/ZN (oai321d1)                         0.31       2.48 r
+  u_directory/state_reg_12__1_/D (dfnrb2)                 0.00       2.48 r
+  data arrival time                                                  2.48
+
+  clock PCLK (rise edge)                                  0.67       0.67
+  clock network delay (ideal)                             0.00       0.67
+  u_directory/state_reg_12__1_/CP (dfnrb2)                0.00       0.67 r
+  library setup time                                     -0.12       0.55
+  data required time                                                 0.55
+  --------------------------------------------------------------------------
+  data required time                                                 0.55
+  data arrival time                                                 -2.48
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -1.93
+
+
+  Startpoint: u_reg/wr_word_tag_reg_0_
+              (rising edge-triggered flip-flop clocked by PCLK)
+  Endpoint: u_wr_packer/out_ent_reg_data__11_
+            (rising edge-triggered flip-flop clocked by PCLK)
+  Path Group: PCLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  apb2axi            280000                tsl18fs120_typ
+  apb2axi_wr_packer  8000                  tsl18fs120_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock PCLK (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_reg/wr_word_tag_reg_0_/CP (dfnrq4)                    0.00 #     0.00 r
+  u_reg/wr_word_tag_reg_0_/Q (dfnrq4)                     0.31       0.31 r
+  u_reg/wr_word_tag[0] (apb2axi_reg)                      0.00       0.31 r
+  u_wr_packer/wr_word_tag[0] (apb2axi_wr_packer)          0.00       0.31 r
+  u_wr_packer/U159/ZN (invbd4)                            0.07       0.38 f
+  u_wr_packer/U143/ZN (nd13d2)                            0.25       0.63 f
+  u_wr_packer/U216/ZN (inv0d4)                            0.10       0.74 r
+  u_wr_packer/U443/ZN (aoi22d1)                           0.06       0.80 f
+  u_wr_packer/U444/ZN (nd04d1)                            0.12       0.92 r
+  u_wr_packer/U429/Z (mx02d2)                             0.19       1.10 r
+  u_wr_packer/U204/ZN (nd12d2)                            0.06       1.16 f
+  u_wr_packer/U212/Z (an04d4)                             0.15       1.31 f
+  u_wr_packer/U225/Z (an02d2)                             0.22       1.53 f
+  u_wr_packer/U101/ZN (nd02d0)                            0.19       1.72 r
+  u_wr_packer/U315/Z (buffd1)                             0.35       2.07 r
+  u_wr_packer/U788/ZN (oai22d1)                           0.11       2.18 f
+  u_wr_packer/U789/ZN (nr04d1)                            0.18       2.36 r
+  u_wr_packer/U790/ZN (nd04d1)                            0.10       2.46 f
+  u_wr_packer/out_ent_reg_data__11_/D (dfnrb1)            0.00       2.46 f
+  data arrival time                                                  2.46
+
+  clock PCLK (rise edge)                                  0.67       0.67
+  clock network delay (ideal)                             0.00       0.67
+  u_wr_packer/out_ent_reg_data__11_/CP (dfnrb1)           0.00       0.67 r
+  library setup time                                     -0.13       0.54
+  data required time                                                 0.54
+  --------------------------------------------------------------------------
+  data required time                                                 0.54
+  data arrival time                                                 -2.46
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -1.93
+
+
+  Startpoint: u_reg/wr_word_tag_reg_0_
+              (rising edge-triggered flip-flop clocked by PCLK)
+  Endpoint: u_wr_packer/out_ent_reg_data__10_
+            (rising edge-triggered flip-flop clocked by PCLK)
+  Path Group: PCLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  apb2axi            280000                tsl18fs120_typ
+  apb2axi_wr_packer  8000                  tsl18fs120_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock PCLK (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_reg/wr_word_tag_reg_0_/CP (dfnrq4)                    0.00 #     0.00 r
+  u_reg/wr_word_tag_reg_0_/Q (dfnrq4)                     0.31       0.31 r
+  u_reg/wr_word_tag[0] (apb2axi_reg)                      0.00       0.31 r
+  u_wr_packer/wr_word_tag[0] (apb2axi_wr_packer)          0.00       0.31 r
+  u_wr_packer/U159/ZN (invbd4)                            0.07       0.38 f
+  u_wr_packer/U143/ZN (nd13d2)                            0.25       0.63 f
+  u_wr_packer/U216/ZN (inv0d4)                            0.10       0.74 r
+  u_wr_packer/U443/ZN (aoi22d1)                           0.06       0.80 f
+  u_wr_packer/U444/ZN (nd04d1)                            0.12       0.92 r
+  u_wr_packer/U429/Z (mx02d2)                             0.19       1.10 r
+  u_wr_packer/U204/ZN (nd12d2)                            0.06       1.16 f
+  u_wr_packer/U212/Z (an04d4)                             0.15       1.31 f
+  u_wr_packer/U225/Z (an02d2)                             0.22       1.53 f
+  u_wr_packer/U101/ZN (nd02d0)                            0.19       1.72 r
+  u_wr_packer/U315/Z (buffd1)                             0.35       2.07 r
+  u_wr_packer/U762/ZN (oai22d1)                           0.11       2.18 f
+  u_wr_packer/U763/ZN (nr04d1)                            0.18       2.36 r
+  u_wr_packer/U764/ZN (nd04d1)                            0.10       2.46 f
+  u_wr_packer/out_ent_reg_data__10_/D (dfnrb1)            0.00       2.46 f
+  data arrival time                                                  2.46
+
+  clock PCLK (rise edge)                                  0.67       0.67
+  clock network delay (ideal)                             0.00       0.67
+  u_wr_packer/out_ent_reg_data__10_/CP (dfnrb1)           0.00       0.67 r
+  library setup time                                     -0.13       0.54
+  data required time                                                 0.54
+  --------------------------------------------------------------------------
+  data required time                                                 0.54
+  data arrival time                                                 -2.46
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -1.93
+
+
+  Startpoint: u_reg/wr_word_tag_reg_0_
+              (rising edge-triggered flip-flop clocked by PCLK)
+  Endpoint: u_wr_packer/out_ent_reg_data__9_
+            (rising edge-triggered flip-flop clocked by PCLK)
+  Path Group: PCLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  apb2axi            280000                tsl18fs120_typ
+  apb2axi_wr_packer  8000                  tsl18fs120_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock PCLK (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_reg/wr_word_tag_reg_0_/CP (dfnrq4)                    0.00 #     0.00 r
+  u_reg/wr_word_tag_reg_0_/Q (dfnrq4)                     0.31       0.31 r
+  u_reg/wr_word_tag[0] (apb2axi_reg)                      0.00       0.31 r
+  u_wr_packer/wr_word_tag[0] (apb2axi_wr_packer)          0.00       0.31 r
+  u_wr_packer/U159/ZN (invbd4)                            0.07       0.38 f
+  u_wr_packer/U143/ZN (nd13d2)                            0.25       0.63 f
+  u_wr_packer/U216/ZN (inv0d4)                            0.10       0.74 r
+  u_wr_packer/U443/ZN (aoi22d1)                           0.06       0.80 f
+  u_wr_packer/U444/ZN (nd04d1)                            0.12       0.92 r
+  u_wr_packer/U429/Z (mx02d2)                             0.19       1.10 r
+  u_wr_packer/U204/ZN (nd12d2)                            0.06       1.16 f
+  u_wr_packer/U212/Z (an04d4)                             0.15       1.31 f
+  u_wr_packer/U225/Z (an02d2)                             0.22       1.53 f
+  u_wr_packer/U101/ZN (nd02d0)                            0.19       1.72 r
+  u_wr_packer/U315/Z (buffd1)                             0.35       2.07 r
+  u_wr_packer/U736/ZN (oai22d1)                           0.11       2.18 f
+  u_wr_packer/U737/ZN (nr04d1)                            0.18       2.36 r
+  u_wr_packer/U738/ZN (nd04d1)                            0.10       2.46 f
+  u_wr_packer/out_ent_reg_data__9_/D (dfnrb1)             0.00       2.46 f
+  data arrival time                                                  2.46
+
+  clock PCLK (rise edge)                                  0.67       0.67
+  clock network delay (ideal)                             0.00       0.67
+  u_wr_packer/out_ent_reg_data__9_/CP (dfnrb1)            0.00       0.67 r
+  library setup time                                     -0.13       0.54
+  data required time                                                 0.54
+  --------------------------------------------------------------------------
+  data required time                                                 0.54
+  data arrival time                                                 -2.46
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -1.93
+
+
+  Startpoint: u_reg/wr_word_tag_reg_0_
+              (rising edge-triggered flip-flop clocked by PCLK)
+  Endpoint: u_wr_packer/out_ent_reg_data__8_
+            (rising edge-triggered flip-flop clocked by PCLK)
+  Path Group: PCLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  apb2axi            280000                tsl18fs120_typ
+  apb2axi_wr_packer  8000                  tsl18fs120_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock PCLK (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_reg/wr_word_tag_reg_0_/CP (dfnrq4)                    0.00 #     0.00 r
+  u_reg/wr_word_tag_reg_0_/Q (dfnrq4)                     0.31       0.31 r
+  u_reg/wr_word_tag[0] (apb2axi_reg)                      0.00       0.31 r
+  u_wr_packer/wr_word_tag[0] (apb2axi_wr_packer)          0.00       0.31 r
+  u_wr_packer/U159/ZN (invbd4)                            0.07       0.38 f
+  u_wr_packer/U143/ZN (nd13d2)                            0.25       0.63 f
+  u_wr_packer/U216/ZN (inv0d4)                            0.10       0.74 r
+  u_wr_packer/U443/ZN (aoi22d1)                           0.06       0.80 f
+  u_wr_packer/U444/ZN (nd04d1)                            0.12       0.92 r
+  u_wr_packer/U429/Z (mx02d2)                             0.19       1.10 r
+  u_wr_packer/U204/ZN (nd12d2)                            0.06       1.16 f
+  u_wr_packer/U212/Z (an04d4)                             0.15       1.31 f
+  u_wr_packer/U225/Z (an02d2)                             0.22       1.53 f
+  u_wr_packer/U101/ZN (nd02d0)                            0.19       1.72 r
+  u_wr_packer/U314/Z (buffd1)                             0.35       2.07 r
+  u_wr_packer/U710/ZN (oai22d1)                           0.11       2.18 f
+  u_wr_packer/U711/ZN (nr04d1)                            0.18       2.36 r
+  u_wr_packer/U712/ZN (nd04d1)                            0.10       2.46 f
+  u_wr_packer/out_ent_reg_data__8_/D (dfnrb1)             0.00       2.46 f
+  data arrival time                                                  2.46
+
+  clock PCLK (rise edge)                                  0.67       0.67
+  clock network delay (ideal)                             0.00       0.67
+  u_wr_packer/out_ent_reg_data__8_/CP (dfnrb1)            0.00       0.67 r
+  library setup time                                     -0.13       0.54
+  data required time                                                 0.54
+  --------------------------------------------------------------------------
+  data required time                                                 0.54
+  data arrival time                                                 -2.46
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -1.93
+
+
+  Startpoint: u_reg/wr_word_tag_reg_0_
+              (rising edge-triggered flip-flop clocked by PCLK)
+  Endpoint: u_wr_packer/out_ent_reg_data__6_
+            (rising edge-triggered flip-flop clocked by PCLK)
+  Path Group: PCLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  apb2axi            280000                tsl18fs120_typ
+  apb2axi_wr_packer  8000                  tsl18fs120_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock PCLK (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_reg/wr_word_tag_reg_0_/CP (dfnrq4)                    0.00 #     0.00 r
+  u_reg/wr_word_tag_reg_0_/Q (dfnrq4)                     0.31       0.31 r
+  u_reg/wr_word_tag[0] (apb2axi_reg)                      0.00       0.31 r
+  u_wr_packer/wr_word_tag[0] (apb2axi_wr_packer)          0.00       0.31 r
+  u_wr_packer/U159/ZN (invbd4)                            0.07       0.38 f
+  u_wr_packer/U143/ZN (nd13d2)                            0.25       0.63 f
+  u_wr_packer/U216/ZN (inv0d4)                            0.10       0.74 r
+  u_wr_packer/U443/ZN (aoi22d1)                           0.06       0.80 f
+  u_wr_packer/U444/ZN (nd04d1)                            0.12       0.92 r
+  u_wr_packer/U429/Z (mx02d2)                             0.19       1.10 r
+  u_wr_packer/U204/ZN (nd12d2)                            0.06       1.16 f
+  u_wr_packer/U212/Z (an04d4)                             0.15       1.31 f
+  u_wr_packer/U225/Z (an02d2)                             0.22       1.53 f
+  u_wr_packer/U101/ZN (nd02d0)                            0.19       1.72 r
+  u_wr_packer/U314/Z (buffd1)                             0.35       2.07 r
+  u_wr_packer/U658/ZN (oai22d1)                           0.11       2.18 f
+  u_wr_packer/U659/ZN (nr04d1)                            0.18       2.36 r
+  u_wr_packer/U660/ZN (nd04d1)                            0.10       2.46 f
+  u_wr_packer/out_ent_reg_data__6_/D (dfnrb1)             0.00       2.46 f
+  data arrival time                                                  2.46
+
+  clock PCLK (rise edge)                                  0.67       0.67
+  clock network delay (ideal)                             0.00       0.67
+  u_wr_packer/out_ent_reg_data__6_/CP (dfnrb1)            0.00       0.67 r
+  library setup time                                     -0.13       0.54
+  data required time                                                 0.54
+  --------------------------------------------------------------------------
+  data required time                                                 0.54
+  data arrival time                                                 -2.46
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -1.93
+
+
+  Startpoint: u_reg/wr_word_tag_reg_0_
+              (rising edge-triggered flip-flop clocked by PCLK)
+  Endpoint: u_wr_packer/out_ent_reg_data__5_
+            (rising edge-triggered flip-flop clocked by PCLK)
+  Path Group: PCLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  apb2axi            280000                tsl18fs120_typ
+  apb2axi_wr_packer  8000                  tsl18fs120_typ
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock PCLK (rise edge)                                  0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  u_reg/wr_word_tag_reg_0_/CP (dfnrq4)                    0.00 #     0.00 r
+  u_reg/wr_word_tag_reg_0_/Q (dfnrq4)                     0.31       0.31 r
+  u_reg/wr_word_tag[0] (apb2axi_reg)                      0.00       0.31 r
+  u_wr_packer/wr_word_tag[0] (apb2axi_wr_packer)          0.00       0.31 r
+  u_wr_packer/U159/ZN (invbd4)                            0.07       0.38 f
+  u_wr_packer/U143/ZN (nd13d2)                            0.25       0.63 f
+  u_wr_packer/U216/ZN (inv0d4)                            0.10       0.74 r
+  u_wr_packer/U443/ZN (aoi22d1)                           0.06       0.80 f
+  u_wr_packer/U444/ZN (nd04d1)                            0.12       0.92 r
+  u_wr_packer/U429/Z (mx02d2)                             0.19       1.10 r
+  u_wr_packer/U204/ZN (nd12d2)                            0.06       1.16 f
+  u_wr_packer/U212/Z (an04d4)                             0.15       1.31 f
+  u_wr_packer/U225/Z (an02d2)                             0.22       1.53 f
+  u_wr_packer/U101/ZN (nd02d0)                            0.19       1.72 r
+  u_wr_packer/U314/Z (buffd1)                             0.35       2.07 r
+  u_wr_packer/U632/ZN (oai22d1)                           0.11       2.18 f
+  u_wr_packer/U633/ZN (nr04d1)                            0.18       2.36 r
+  u_wr_packer/U634/ZN (nd04d1)                            0.10       2.46 f
+  u_wr_packer/out_ent_reg_data__5_/D (dfnrb1)             0.00       2.46 f
+  data arrival time                                                  2.46
+
+  clock PCLK (rise edge)                                  0.67       0.67
+  clock network delay (ideal)                             0.00       0.67
+  u_wr_packer/out_ent_reg_data__5_/CP (dfnrb1)            0.00       0.67 r
+  library setup time                                     -0.13       0.54
+  data required time                                                 0.54
+  --------------------------------------------------------------------------
+  data required time                                                 0.54
+  data arrival time                                                 -2.46
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -1.93
+
+
+1
